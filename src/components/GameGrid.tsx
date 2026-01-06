@@ -1,10 +1,19 @@
 import type { GameQuery } from "@/App";
 import useGames from "@/hooks/useGames";
+import { Fragment } from "react/jsx-runtime";
 import GameCard from "./GameCard";
 import GameCardSkeleton from "./GameCardSkeleton";
+import { Button } from "./ui/button";
 
 export default function GameGrid({ gameQuery }: { gameQuery: GameQuery }) {
-	const { data: games, error, isLoading } = useGames(gameQuery);
+	const {
+		data: games,
+		error,
+		isLoading,
+		isFetchingNextPage,
+		hasNextPage,
+		fetchNextPage,
+	} = useGames(gameQuery);
 
 	if (error) return <p>{error.message}</p>;
 
@@ -15,10 +24,23 @@ export default function GameGrid({ gameQuery }: { gameQuery: GameQuery }) {
 			) : (
 				<>
 					<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
-						{games?.results.map((game) => (
-							<GameCard key={game.id} game={game} />
+						{games?.pages.map((page, index) => (
+							<Fragment key={index}>
+								{page.results.map((game) => (
+									<GameCard key={game.id} game={game} />
+								))}
+							</Fragment>
 						))}
 					</div>
+					{hasNextPage && (
+						<Button
+							onClick={() => fetchNextPage()}
+							size={"xl"}
+							className="font-bold self-center"
+						>
+							{isFetchingNextPage ? "Loading..." : "Load More"}
+						</Button>
+					)}
 				</>
 			)}
 		</>
