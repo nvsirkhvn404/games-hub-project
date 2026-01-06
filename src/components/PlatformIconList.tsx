@@ -9,7 +9,7 @@ import {
 import { MdPhoneIphone } from "react-icons/md";
 import { SiNintendoswitch } from "react-icons/si";
 import { BsGlobe } from "react-icons/bs";
-import type { Platform } from "@/hooks/useGames";
+import type { Platform } from "@/hooks/usePlatforms";
 import type { IconType } from "react-icons";
 
 export default function PlatformIconList({ platforms }
