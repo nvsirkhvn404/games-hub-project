@@ -4,6 +4,7 @@ import { Fragment } from "react/jsx-runtime";
 import GameCard from "./GameCard";
 import GameCardSkeleton from "./GameCardSkeleton";
 import { Button } from "./ui/button";
+import { Spinner } from "./ui/spinner";
 
 export default function GameGrid({ gameQuery }: { gameQuery: GameQuery }) {
 	const {
@@ -19,11 +20,11 @@ export default function GameGrid({ gameQuery }: { gameQuery: GameQuery }) {
 
 	return (
 		<>
-			{isLoading ? (
-				<GameCardSkeleton />
-			) : (
-				<>
-					<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+			<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 my-5">
+				{isLoading ? (
+					<GameCardSkeleton />
+				) : (
+					<>
 						{games?.pages.map((page, index) => (
 							<Fragment key={index}>
 								{page.results.map((game) => (
@@ -31,17 +32,24 @@ export default function GameGrid({ gameQuery }: { gameQuery: GameQuery }) {
 								))}
 							</Fragment>
 						))}
-					</div>
-					{hasNextPage && (
-						<Button
-							onClick={() => fetchNextPage()}
-							size={"xl"}
-							className="font-bold self-center"
-						>
-							{isFetchingNextPage ? "Loading..." : "Load More"}
-						</Button>
+					</>
+				)}
+			</div>
+			{hasNextPage && (
+				<Button
+					onClick={() => fetchNextPage()}
+					size={"xl"}
+					className="font-bold self-center"
+					disabled={isFetchingNextPage}
+				>
+					{isFetchingNextPage ? (
+						<div className="flex items-center gap-3">
+							<Spinner /> Loading...
+						</div>
+					) : (
+						"Load More"
 					)}
-				</>
+				</Button>
 			)}
 		</>
 	);
