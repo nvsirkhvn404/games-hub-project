@@ -12,7 +12,7 @@ export default function GenreList({ onSelectGenre, selectedGenreId }: Props) {
 	const { data: genres, isLoading, error } = useGenres();
 	const skeletons = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
-	if (error) return null;
+	if (error) return <p>{error.message}</p>;
 
 	return (
 		<div className="hidden sm:flex flex-col">

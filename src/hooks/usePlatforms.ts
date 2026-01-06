@@ -10,7 +10,7 @@ export interface Platform {
 	slug: string;
 }
 
-export default function usePlatform() {
+export default function usePlatforms() {
 	return useQuery({
 		queryKey: ["platform"],
 		queryFn: apiClient.getAll,
