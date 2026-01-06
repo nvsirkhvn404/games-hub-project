@@ -1,16 +1,11 @@
 import type { GameQuery } from "@/App";
-import useGenres from "@/hooks/useGenre";
+import useGenre from "@/hooks/useGenre";
 import usePlatform from "@/hooks/usePlatform";
 
 export default function GameHeading({ gameQuery }: { gameQuery: GameQuery }) {
-	const { data: genres } = useGenres();
-	const genre  = genres?.results.find(g => g.id === gameQuery.genreId);
-
+	const genre = useGenre(gameQuery.genreId);
 	const platform = usePlatform(gameQuery.platformId);
-
-	const heading = `${platform?.name || ""} ${
-		genre?.name || ""
-	} Games`;
+	const heading = `${platform?.name || ""} ${genre?.name || ""} Games`;
 
 	return (
 		<h1 className="text-4xl sm:text-5xl md:text-6xl font-bold">{heading}</h1>

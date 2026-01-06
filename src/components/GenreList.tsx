@@ -1,4 +1,4 @@
-import useGenres, { type Genre } from "@/hooks/useGenre";
+import useGenres, { type Genre } from "@/hooks/useGenres";
 import { GenreListSkeleton } from "./GenreListSkeleton";
 import { Button } from "./ui/button";
 import getCroppedImageUrl from "@/service/image-url";

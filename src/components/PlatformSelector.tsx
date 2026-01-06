@@ -22,7 +22,7 @@ export default function PlatformSelector({
 	const { data, error } = usePlatforms();
 	const selectedPlatform = usePlatform(selectedPlatformId);
 
-	if (error) return null;
+	if (error) return error.message;
 
 	return (
 		<DropdownMenu>
