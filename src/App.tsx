@@ -2,16 +2,14 @@ import NavBar from "./components/NavBar";
 import GameGrid from "./components/GameGrid";
 import GenreList from "./components/GenreList";
 import { useState } from "react";
-import type { Genre } from "./hooks/useGenre";
 import PlatformSelector from "./components/PlatformSelector";
-import type { Platform } from "./hooks/usePlatforms";
 import SortSelector from "./components/SortSelector";
 import SearchInput from "./components/SearchInput";
 import GameHeading from "./components/GameHeading";
 
 export interface GameQuery {
-	genre: Genre | null;
-	platform: Platform | null;
+	genreId?: number;
+	platformId?: number;
 	sortOrder: string;
 	searchText: string;
 }
@@ -25,8 +23,8 @@ export default function App() {
 			<main className="grid grid-cols-2">
 				<div className="col-end-1">
 					<GenreList
-						onSelectGenre={(genre) => setGameQuery({ ...gameQuery, genre })}
-						selectedGenre={gameQuery.genre}
+						onSelectGenre={(genre) => setGameQuery({ ...gameQuery, genreId: genre.id })}
+						selectedGenreId={gameQuery.genreId}
 					/>
 				</div>
 				<div className="flex flex-col gap-5 p-5 col-span-full border-l">
@@ -40,9 +38,9 @@ export default function App() {
 						<div className="flex justify-between sm:justify-normal gap-5">
 							<PlatformSelector
 								onSelectPlatform={(platform) =>
-									setGameQuery({ ...gameQuery, platform })
+									setGameQuery({ ...gameQuery, platformId: platform.id })
 								}
-								selectedPlatform={gameQuery.platform}
+								selectedPlatformId={gameQuery.platformId}
 							/>
 							<SortSelector
 								onSelectSortOrder={(sortOrder) =>
