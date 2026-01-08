@@ -1,8 +1,9 @@
-import type { GameQuery } from "@/App";
+
 import APIClient from "@/service/api-client";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import type { Platform } from "./usePlatforms";
 import ms from "ms";
+import type { GameQuery } from "@/store";
 
 const apiClient = new APIClient<Game>("/games");
 

@@ -7,19 +7,14 @@ import {
 	DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import usePlatform from "@/hooks/usePlatform";
-import type { Platform } from "@/hooks/usePlatforms";
 import usePlatforms from "@/hooks/usePlatforms";
+import useGameQueryStore from "@/store";
 
-interface Props {
-	onSelectPlatform: (platfrom: Platform) => void;
-	selectedPlatformId?: number;
-}
-
-export default function PlatformSelector({
-	onSelectPlatform,
-	selectedPlatformId,
-}: Props) {
-	const { data, error } = usePlatforms();
+export default function PlatformSelector() {
+	const selectedPlatformId = useGameQueryStore(s => s.gameQuery.platformId);
+	const setPlatformId = useGameQueryStore(s => s.setPlatformId);
+	const { data, error } = usePlatforms()
+	
 	const selectedPlatform = usePlatform(selectedPlatformId);
 
 	if (error) return error.message;
@@ -35,7 +30,7 @@ export default function PlatformSelector({
 				<DropdownMenuGroup>
 					{data?.results.map((platform) => (
 						<DropdownMenuItem
-							onClick={() => onSelectPlatform(platform)}
+							onClick={() => setPlatformId(platform.id)}
 							key={platform.id}
 						>
 							{platform.name}

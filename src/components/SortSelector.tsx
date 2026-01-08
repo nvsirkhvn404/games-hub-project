@@ -6,13 +6,13 @@ import {
 	DropdownMenuItem,
 	DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import useGameQueryStore from "@/store";
 
-interface Props {
-	onSelectSortOrder: (sortOrder: string) => void;
-	sortOrder: string;
-}
 
-const SortSelector = ({ onSelectSortOrder, sortOrder }: Props) => {
+export default function SortSelector() {
+	const sortOrder = useGameQueryStore((s) => s.gameQuery.sortOrder);
+	const setSortOrder = useGameQueryStore((s) => s.setSortOrder);
+	
 	const sortOrders = [
 		{ value: "", label: "Relevance" },
 		{ value: "-added", label: "Date added" },
@@ -38,7 +38,7 @@ const SortSelector = ({ onSelectSortOrder, sortOrder }: Props) => {
 					{sortOrders.map((order) => (
 						<DropdownMenuItem
 							key={order.value}
-							onClick={() => onSelectSortOrder(order.value)}
+							onClick={() => setSortOrder(order.value)}
 						>
 							{order.label}
 						</DropdownMenuItem>
@@ -48,5 +48,3 @@ const SortSelector = ({ onSelectSortOrder, sortOrder }: Props) => {
 		</DropdownMenu>
 	);
 };
-
-export default SortSelector;

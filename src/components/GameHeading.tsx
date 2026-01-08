@@ -1,10 +1,14 @@
-import type { GameQuery } from "@/App";
 import useGenre from "@/hooks/useGenre";
 import usePlatform from "@/hooks/usePlatform";
+import useGameQueryStore from "@/store";
 
-export default function GameHeading({ gameQuery }: { gameQuery: GameQuery }) {
-	const genre = useGenre(gameQuery.genreId);
-	const platform = usePlatform(gameQuery.platformId);
+export default function GameHeading() {
+	const genreId = useGameQueryStore((s) => s.gameQuery.genreId);
+	const platformId = useGameQueryStore((s) => s.gameQuery.platformId);
+	
+	const genre = useGenre(genreId);
+	const platform = usePlatform(platformId);
+
 	const heading = `${platform?.name || ""} ${genre?.name || ""} Games`;
 
 	return (

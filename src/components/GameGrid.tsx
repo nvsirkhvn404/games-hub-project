@@ -1,12 +1,14 @@
-import type { GameQuery } from "@/App";
+
 import useGames from "@/hooks/useGames";
 import { Fragment } from "react/jsx-runtime";
 import GameCard from "./GameCard";
 import GameCardSkeleton from "./GameCardSkeleton";
 import { Button } from "./ui/button";
 import { Spinner } from "./ui/spinner";
+import useGameQueryStore from "@/store";
 
-export default function GameGrid({ gameQuery }: { gameQuery: GameQuery }) {
+export default function GameGrid() {
+	const gameQuery = useGameQueryStore(s => s.gameQuery);
 	const {
 		data: games,
 		error,
