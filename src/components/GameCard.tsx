@@ -1,10 +1,10 @@
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import type { Game } from "@/hooks/useGames";
 import PlatformIconList from "./PlatformIconList";
 import CriticScore from "./CriticScore";
 import getCroppedImageUrl from "@/service/image-url";
 import Emoji from "./Emoji";
 import { Link } from "react-router";
+import type { Game } from "@/entities/Game";
 
 export default function GameCard({ game }: { game: Game }) {
 	return (
