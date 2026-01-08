@@ -1,0 +1,17 @@
+import GameDetailPage from "@/pages/GameDetailPage";
+import { createBrowserRouter } from "react-router";
+import HomePage from "../pages/HomePage";
+import Layout from "../pages/Layout";
+
+const router = createBrowserRouter([
+	{
+		path: "/",
+		element: <Layout />,
+		children: [
+			{ path: "", element: <HomePage /> },
+			{ path: "games/:id", element: <GameDetailPage /> },
+		],
+	},
+]);
+
+export default router;
