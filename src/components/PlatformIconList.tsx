@@ -1,19 +1,27 @@
 import {
-	FaWindows,
-	FaPlaystation,
-	FaXbox,
+	Tooltip,
+	TooltipContent,
+	TooltipTrigger,
+} from "@/components/ui/tooltip";
+import type { Platform } from "@/hooks/usePlatforms";
+import type { IconType } from "react-icons";
+import { BsGlobe } from "react-icons/bs";
+import {
+	FaAndroid,
 	FaApple,
 	FaLinux,
-	FaAndroid,
+	FaPlaystation,
+	FaWindows,
+	FaXbox,
 } from "react-icons/fa";
 import { MdPhoneIphone } from "react-icons/md";
 import { SiNintendoswitch } from "react-icons/si";
-import { BsGlobe } from "react-icons/bs";
-import type { Platform } from "@/hooks/usePlatforms";
-import type { IconType } from "react-icons";
 
-export default function PlatformIconList({ platforms }
-  : { platforms: Platform[] }) {
+export default function PlatformIconList({
+	platforms,
+}: {
+	platforms: Platform[];
+}) {
 	const iconMap: { [key: string]: IconType } = {
 		pc: FaWindows,
 		playstation: FaPlaystation,
@@ -26,11 +34,18 @@ export default function PlatformIconList({ platforms }
 		web: BsGlobe,
 	};
 	return (
-			<div className="flex flex-wrap gap-1.5 text-neutral-600 my-2 ">
-			{platforms.map((platform) => {
-				const Icon = iconMap[platform.slug];
+		<div className="flex flex-wrap gap-1.5 text-neutral-600 my-2">
+			{platforms.map(({ id, slug, name }) => {
+				const Icon = iconMap[slug];
 				if (!Icon) return null;
-				return <Icon key={platform.id ?? platform.slug} size={"15"}/>;
+				return (
+					<Tooltip key={id || slug}>
+						<TooltipTrigger>
+							<Icon size={"16"} />
+						</TooltipTrigger>
+						<TooltipContent className="">{name}</TooltipContent>
+					</Tooltip>
+				);
 			})}
 		</div>
 	);
