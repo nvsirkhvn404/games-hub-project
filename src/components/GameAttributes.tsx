@@ -1,4 +1,4 @@
-import type { Game } from "@/entities/Game";
+import type Game from "@/entities/Game";
 import type { ReactNode } from "react";
 import CriticScore from "./CriticScore";
 

@@ -3,7 +3,7 @@ import {
 	TooltipContent,
 	TooltipTrigger,
 } from "@/components/ui/tooltip";
-import type { Platform } from "@/entities/Platform";
+import type Platform from "@/entities/Platform";
 import type { IconType } from "react-icons";
 import { BsGlobe } from "react-icons/bs";
 import {
