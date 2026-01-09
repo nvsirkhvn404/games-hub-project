@@ -14,12 +14,16 @@ export default function GameDetailPage() {
 	if (error || !game) throw error;
 
 	return (
-		<main className="flex flex-col gap-5 p-10">
-			<h1 className="text-4xl sm:text-5xl md:text-6xl font-bold">{game.name}</h1>
-			<ExpandableText>{game.description_raw}</ExpandableText>
-			<GameAttributes game={game}/>
-			<GameTrailer gameId={game.id}/>
-			<ScreenshotGrid gameId={game.id}/>
+		<main className="grid md:grid-cols-2 gap-5 p-10">
+			<div>
+				<h1 className="text-4xl sm:text-5xl md:text-6xl font-bold my-5">{game.name}</h1>
+				<ExpandableText>{game.description_raw}</ExpandableText>
+				<GameAttributes game={game}/>
+			</div>
+			<div>
+				<GameTrailer gameId={game.id}/>
+				<ScreenshotGrid gameId={game.id}/>
+			</div>
 		</main>
 	);
 }
