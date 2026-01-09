@@ -1,6 +1,7 @@
 import ExpandableText from "@/components/ExpandableText";
 import GameAttributes from "@/components/GameAttributes";
 import GameTrailer from "@/components/GameTrailer";
+import ScreenshotGrid from "@/components/ScreenshotGrid";
 import useGame from "@/hooks/useGame";
 import { useParams } from "react-router";
 
@@ -18,6 +19,7 @@ export default function GameDetailPage() {
 			<ExpandableText>{game.description_raw}</ExpandableText>
 			<GameAttributes game={game}/>
 			<GameTrailer gameId={game.id}/>
+			<ScreenshotGrid gameId={game.id}/>
 		</main>
 	);
 }

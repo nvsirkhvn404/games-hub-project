@@ -2,7 +2,7 @@ import useTrailers from "@/hooks/useTrailers";
 
 export default function GameTrailer({ gameId }: { gameId: number }) {
 	const { data, isLoading, error } = useTrailers(gameId);
-	console.log(data);
+
 	if (isLoading) return null;
 
 	if (error) throw error;
