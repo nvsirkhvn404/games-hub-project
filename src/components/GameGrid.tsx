@@ -40,7 +40,7 @@ export default function GameGrid() {
 			{hasNextPage && (
 				<Button
 					onClick={() => fetchNextPage()}
-					size={"xl"}
+					size={"lg"}
 					className="font-bold self-center"
 					disabled={isFetchingNextPage}
 				>
