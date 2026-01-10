@@ -14,7 +14,7 @@ export default function GameDetailPage() {
 	if (error || !game) throw error;
 
 	return (
-		<main className="grid md:grid-cols-2 gap-5 p-10">
+		<main className="grid lg:grid-cols-2 gap-5 p-10">
 			<div>
 				<h1 className="text-4xl sm:text-5xl md:text-6xl font-bold my-5">{game.name}</h1>
 				<ExpandableText>{game.description_raw}</ExpandableText>

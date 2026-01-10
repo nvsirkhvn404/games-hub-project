@@ -13,7 +13,7 @@ export default function ExpandableText({ children }: { children: string }) {
 			<p className="inline wrap-break-word text-xl text-muted-foreground">
 				{expanded ? children : <>{children.substring(0, limit)}...</>}
 			</p>
-			<Button size={"xs"} onClick={() => setExpanded(!expanded)}>
+			<Button className="h-5 w-20" onClick={() => setExpanded(!expanded)}>
 				{expanded ? "Show Less" : "Read More"}
 			</Button>
 		</div>

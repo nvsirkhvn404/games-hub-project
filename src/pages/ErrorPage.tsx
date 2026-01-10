@@ -21,7 +21,7 @@ export default function ErrorPage() {
 				)}
 
 				<Link to={"/"}>
-					<Button size={"xl"}>
+					<Button>
 						<Home />
 						Go Home
 					</Button>
