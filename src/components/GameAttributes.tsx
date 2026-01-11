@@ -13,6 +13,7 @@ export default function GameAttributes({ game }: { game: Game }) {
 		esrb_rating,
 		released,
 		website,
+		playtime,
 	} = game;
 	return (
 		<div className="grid grid-cols-2 lg:grid-cols-3 gap-4 my-5">
@@ -56,6 +57,12 @@ export default function GameAttributes({ game }: { game: Game }) {
 			{website && (
 				<GameAttribute term="Age Rating">
 					<Link to={website} className="wrap-break-word overflow-hidden">{website}</Link>
+				</GameAttribute>
+			)}
+
+			{playtime && (
+				<GameAttribute term="Playtime (in hours)">
+					{playtime}
 				</GameAttribute>
 			)}
 		</div>

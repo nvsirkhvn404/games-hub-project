@@ -36,6 +36,7 @@ export default function GameDetailPage() {
 								platforms={game.parent_platforms.map((p) => p.platform)}
 							/>
 							<Emoji size={11} rating={game.rating_top} />
+							<p className="text-2xl font-bold">⭐{game.rating}/5</p>
 						</div>
 					</div>
 					<ExpandableText>{game.description_raw}</ExpandableText>

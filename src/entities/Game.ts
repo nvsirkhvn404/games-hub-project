@@ -16,4 +16,6 @@ export default interface Game {
 	esrb_rating: { id: number; slug: string; name: string };
 	released: string;
 	website: string;
+	rating: number;
+	playtime: number;
 }
