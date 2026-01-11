@@ -1,21 +1,14 @@
-import { useState } from "react";
-import { Button } from "./ui/button";
+import { ScrollArea } from "./ui/scroll-area";
 
 export default function ExpandableText({ children }: { children: string }) {
-	const [expanded, setExpanded] = useState(false);
-
 	const limit = 300;
 	if (children.length <= limit)
 		return <p className="wrap-break-word">{children}</p>;
 
 	return (
-		<div className="space-x-2">
-			<p className="inline wrap-break-word text-xl text-muted-foreground">
-				{expanded ? children : <>{children.substring(0, limit)}...</>}
-			</p>
-			<Button className="h-5 w-20" onClick={() => setExpanded(!expanded)}>
-				{expanded ? "Show Less" : "Read More"}
-			</Button>
+		<div className="space-x-2 space-y-5">
+			<h3 className="text-2xl sm:text-3xl md:text-4xl font-bold">About </h3>
+			<ScrollArea className="h-42">{children}</ScrollArea>
 		</div>
 	);
 }

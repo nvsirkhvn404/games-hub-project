@@ -3,7 +3,7 @@ import thumbsUp from "../assets/thumbs-up.webp";
 import bullsEye from "../assets/bulls-eye.webp";
 import type { ImgHTMLAttributes } from "react";
 
-const Emoji = ({ rating }: { rating: number }) => {
+const Emoji = ({ rating, size=8 }: { rating: number; size: number }) => {
 
 	if (rating < 3) return null;
 
@@ -16,7 +16,7 @@ const Emoji = ({ rating }: { rating: number }) => {
 	const emoji = emojiMap[rating];
 	if (!emoji) return null;
 
-	return <img {...emoji} className="size-8 mt-1" />;
+	return <img {...emoji} className={`size-${size} mt-1` }/>;
 };
 
 export default Emoji;

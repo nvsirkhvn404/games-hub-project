@@ -18,9 +18,10 @@ import { MdPhoneIphone } from "react-icons/md";
 import { SiNintendoswitch } from "react-icons/si";
 
 export default function PlatformIconList({
-	platforms,
+	platforms, size
 }: {
 	platforms: Platform[];
+	size: string
 }) {
 	const iconMap: { [key: string]: IconType } = {
 		pc: FaWindows,
@@ -41,7 +42,7 @@ export default function PlatformIconList({
 				return (
 					<Tooltip key={id || slug}>
 						<TooltipTrigger>
-							<Icon size={"16"} />
+							<Icon size={`${size}`} />
 						</TooltipTrigger>
 						<TooltipContent className="">{name}</TooltipContent>
 					</Tooltip>

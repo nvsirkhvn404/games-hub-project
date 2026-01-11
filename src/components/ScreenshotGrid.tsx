@@ -30,7 +30,10 @@ export default function ScreenshotGrid({ gameId }: { gameId: number }) {
 
 	return (
 		<>
-			<div className="p-10 select-none">
+			<div className="flex flex-col gap-5 px-10 select-none">
+				<h3 className="text-2xl sm:text-3xl md:text-4xl font-bold">
+					Screenshots
+				</h3>
 				<Carousel opts={{ loop: true }}>
 					<CarouselContent>
 						{data.results.map((file, index) => (
@@ -42,10 +45,7 @@ export default function ScreenshotGrid({ gameId }: { gameId: number }) {
 										setModal(!modal);
 									}}
 								>
-									<img
-										src={file.image}
-										className="rounded-xl cursor-pointer hover:opacity-90 transition"
-									/>
+									<img src={file.image} className="rounded-xl cursor-pointer" />
 								</motion.div>
 							</CarouselItem>
 						))}
@@ -81,7 +81,7 @@ export default function ScreenshotGrid({ gameId }: { gameId: number }) {
 
 					<Button
 						className="font-bold rounded-full h-10 w-10"
-						variant={"outline"}
+						size={"xl"}
 						onClick={() => setModal(!modal)}
 					>
 						<XIcon />

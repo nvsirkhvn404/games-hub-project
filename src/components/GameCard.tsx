@@ -15,13 +15,13 @@ export default function GameCard({ game }: { game: Game }) {
 				</CardHeader>
 				<CardContent className="text-xl font-bold">
 					<div className="flex items-center justify-between">
-						<PlatformIconList
+						<PlatformIconList size="18"
 							platforms={game.parent_platforms.map((p) => p.platform)}
 						/>
 					<CriticScore score={game.metacritic} />
 					</div>
 					<Link to={`/games/${game.slug}`}>{game.name}</Link>
-					<Emoji rating={game.rating_top} />
+					<Emoji size="8" rating={game.rating_top} />
 				</CardContent>
 			</Card>
 		</>

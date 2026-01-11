@@ -1,7 +1,11 @@
+import Emoji from "@/components/Emoji";
 import ExpandableText from "@/components/ExpandableText";
 import GameAttributes from "@/components/GameAttributes";
 import GameTrailer from "@/components/GameTrailer";
+import PlatformIconList from "@/components/PlatformIconList";
 import ScreenshotGrid from "@/components/ScreenshotGrid";
+import { Badge } from "@/components/ui/badge";
+
 import useGame from "@/hooks/useGame";
 import { useParams } from "react-router";
 
@@ -14,16 +18,33 @@ export default function GameDetailPage() {
 	if (error || !game) throw error;
 
 	return (
-		<main className="grid lg:grid-cols-2 gap-5 p-10">
-			<div>
-				<h1 className="text-4xl sm:text-5xl md:text-6xl font-bold my-5">{game.name}</h1>
-				<ExpandableText>{game.description_raw}</ExpandableText>
-				<GameAttributes game={game}/>
-			</div>
-			<div>
-				<GameTrailer gameId={game.id}/>
-				<ScreenshotGrid gameId={game.id}/>
-			</div>
-		</main>
+		<div className="flex flex-col gap-10 px-10 min-h-screen">
+			<GameTrailer gameId={game.id} bg_image={game.background_image} />
+
+			<main className="grid lg:grid-cols-2 gap-5">
+				<div className="flex flex-col gap-4">
+					<div className="flex flex-col gap-2">
+						<h1 className="text-4xl sm:text-5xl md:text-6xl font-bold flex  items-center gap-4">
+							{game.name}
+						</h1>
+						<div className="flex items-center gap-4">
+							<Badge variant={"success"} size={"lg"} className="p-4">
+								{game.released}
+							</Badge>
+							<PlatformIconList
+								size="30"
+								platforms={game.parent_platforms.map((p) => p.platform)}
+							/>
+							<Emoji size={11} rating={game.rating_top} />
+						</div>
+					</div>
+					<ExpandableText>{game.description_raw}</ExpandableText>
+				</div>
+				<div className="flex flex-col gap-4">
+					<ScreenshotGrid gameId={game.id} />
+				</div>
+			</main>
+			<GameAttributes game={game} />
+		</div>
 	);
 }
