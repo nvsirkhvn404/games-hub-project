@@ -27,16 +27,16 @@ export default function GameDetailPage() {
 						<h1 className="text-4xl sm:text-5xl md:text-6xl font-bold flex  items-center gap-4">
 							{game.name}
 						</h1>
-						<div className="flex items-center gap-4">
-							<Badge variant={"success"} size={"lg"} className="p-4">
-								{game.released}
-							</Badge>
+						<div className="grid grid-cols-2 lg:flex items-center gap-4">
 							<PlatformIconList
 								size="30"
 								platforms={game.parent_platforms.map((p) => p.platform)}
 							/>
-							<Emoji size={11} rating={game.rating_top} />
 							<p className="text-2xl font-bold">⭐{game.rating}/5</p>
+							<Badge variant={"success"} size={"lg"} className="p-4">
+								{game.released}
+							</Badge>
+							<Emoji size={11} rating={game.rating_top} />
 						</div>
 					</div>
 					<ExpandableText>{game.description_raw}</ExpandableText>

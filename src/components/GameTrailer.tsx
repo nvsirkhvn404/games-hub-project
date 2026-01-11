@@ -30,14 +30,12 @@ export default function GameTrailer({
 							<img src={bg_image} className="rounded-xl" />
 						</CarouselItem>
 						<CarouselItem>
-							first ? (
 							<video
 								src={first.data[480]}
 								poster={first.preview}
 								controls
 								className="rounded-xl"
 							/>
-							) : null;
 						</CarouselItem>
 					</CarouselContent>
 					<CarouselPrevious />
