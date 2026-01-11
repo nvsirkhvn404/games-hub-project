@@ -8,7 +8,7 @@ import {
 	TooltipTrigger,
 } from "@/components/ui/tooltip";
 
-const Emoji = ({ rating, size = 8 }: { rating: number; size: number }) => {
+const Emoji = ({ rating, size = 8 }: { rating: number; size?: number }) => {
 	if (rating < 3) return null;
 
 	const emojiMap: { [key: number]: ImgHTMLAttributes<HTMLImageElement> } = {
@@ -21,12 +21,14 @@ const Emoji = ({ rating, size = 8 }: { rating: number; size: number }) => {
 	if (!emoji) return null;
 
 	return (
-		<Tooltip>
-			<TooltipTrigger>
-				<img {...emoji} className={`size-${size} mt-1`} />
-			</TooltipTrigger>
-			<TooltipContent className="text-xl font-bold">{emoji.alt}</TooltipContent>
-		</Tooltip>
+		<div>
+			<Tooltip>
+				<TooltipTrigger>
+					<img {...emoji} className={`size-${size} mt-1`} />
+				</TooltipTrigger>
+				<TooltipContent className="text-xl font-bold">{emoji.alt}</TooltipContent>
+			</Tooltip>
+		</div>
 	);
 };
 

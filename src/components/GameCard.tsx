@@ -21,7 +21,7 @@ export default function GameCard({ game }: { game: Game }) {
 					<CriticScore score={game.metacritic} />
 					</div>
 					<Link to={`/games/${game.slug}`}>{game.name}</Link>
-					<Emoji size="8" rating={game.rating_top} />
+					<Emoji rating={game.rating_top} />
 				</CardContent>
 			</Card>
 		</>
