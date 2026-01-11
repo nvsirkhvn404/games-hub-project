@@ -16,7 +16,7 @@ export default function GameAttributes({ game }: { game: Game }) {
 		playtime,
 	} = game;
 	return (
-		<div className="grid grid-cols-2 lg:grid-cols-3 gap-4 my-5">
+		<div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 my-5">
 			<GameAttribute term="Release Date">{released}</GameAttribute>
 			<GameAttribute term="Platfroms">
 				{parent_platforms.map(({ platform }, index) => (

@@ -42,7 +42,13 @@ export default function GameTrailer({
 					<CarouselNext />
 				</Carousel>
 			) : (
-				<img src={bg_image} className="rounded-xl max-w-4xl" />
+				<Carousel opts={{ loop: true }} className="max-w-4xl">
+					<CarouselContent>
+						<CarouselItem>
+							<img src={bg_image} className="rounded-xl" />
+						</CarouselItem>
+					</CarouselContent>
+				</Carousel>
 			)}
 		</div>
 	);
