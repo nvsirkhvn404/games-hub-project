@@ -8,7 +8,7 @@ export default function NavBar() {
 		<nav className="flex justify-between items-center w-full px-4 py-4 border-b gap-5">
 			<Link to={"/"} className="flex text-2xl font-bold gap-4 items-center">
 				<img src={logo} className="h-10" />
-				TKP
+				GamesHub
 			</Link>
 			<SearchInput />
 			<ThemeToggle />
