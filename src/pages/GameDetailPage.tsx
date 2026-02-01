@@ -19,7 +19,7 @@ export default function GameDetailPage() {
 	if (error || !game) throw error;
 
 	return (
-		<div className="flex flex-col gap-5 px-10 min-h-screen">
+		<div className="flex flex-col gap-5 px-5 sm:px-10 min-h-screen">
 			<GameTrailer gameId={game.id} bg_image={game.background_image} />
 
 			<main className="grid lg:grid-cols-2 gap-5">
@@ -27,8 +27,8 @@ export default function GameDetailPage() {
 					<div className="flex flex-col gap-2">
 						<h1 className="text-4xl sm:text-5xl md:text-6xl font-bold flex  items-center gap-4">
 							{game.name}
-							<Emoji size={11} rating={game.rating_top} />
 						</h1>
+						<Emoji size={11} rating={game.rating_top} />
 						<div className="flex flex-wrap items-center gap-4">
 							<PlatformIconList
 								size="30"

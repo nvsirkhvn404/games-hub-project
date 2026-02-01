@@ -15,22 +15,24 @@ export default function GameAttributes({ game }: { game: Game }) {
 		website,
 		playtime,
 	} = game;
+	console.log(game);
+
 	return (
-		<div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 my-5">
+		<div className="flex flex-wrap gap-4 my-5 max-w-5xl">
 			<GameAttribute term="Release Date">{released}</GameAttribute>
-			<GameAttribute term="Platfroms">
-				{parent_platforms.map(({ platform }, index) => (
-					<Fragment key={platform.id}>
-						<p>{platform.name}</p>
-						<SeparatorLogic index={index} data={parent_platforms} />
-					</Fragment>
-				))}
-			</GameAttribute>
 
 			{metacritic && (
 				<GameAttribute term="Metacritic">
 					<CriticScore score={metacritic} />
 				</GameAttribute>
+			)}
+
+			{playtime > 0 && (
+				<GameAttribute term="Playtime (in hours)">{playtime}</GameAttribute>
+			)}
+
+			{esrb_rating && (
+				<GameAttribute term="Age Rating">{esrb_rating.name}</GameAttribute>
 			)}
 
 			<GameAttribute term="Genres">
@@ -50,21 +52,25 @@ export default function GameAttributes({ game }: { game: Game }) {
 				))}
 			</GameAttribute>
 
-			{esrb_rating && (
-				<GameAttribute term="Age Rating">{esrb_rating.name}</GameAttribute>
-			)}
-
 			{website && (
-				<GameAttribute term="Age Rating">
-					<Link to={website} className="wrap-break-word overflow-hidden">{website}</Link>
+				<GameAttribute term="Website">
+					<Link
+						to={website}
+						className="wrap-break-word overflow-hidden underline"
+					>
+						{website}
+					</Link>
 				</GameAttribute>
 			)}
 
-			{playtime && (
-				<GameAttribute term="Playtime (in hours)">
-					{playtime}
-				</GameAttribute>
-			)}
+			<GameAttribute term="Platfroms">
+				{parent_platforms.map(({ platform }, index) => (
+					<Fragment key={platform.id}>
+						<p>{platform.name}</p>
+						<SeparatorLogic index={index} data={parent_platforms} />
+					</Fragment>
+				))}
+			</GameAttribute>
 		</div>
 	);
 }
@@ -76,7 +82,7 @@ interface Props {
 
 function GameAttribute({ term, children }: Props) {
 	return (
-		<div className="bg-muted px-4 py-3 rounded-md">
+		<div className="bg-muted px-4 py-3 rounded-md hover:bg-muted/60 transition-all">
 			<p className="text-muted-foreground">{term}</p>
 			<div className="flex gap-2 flex-wrap">{children}</div>
 		</div>
