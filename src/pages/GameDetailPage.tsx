@@ -6,6 +6,7 @@ import PlatformIconList from "@/components/PlatformIconList";
 import ScreenshotGrid from "@/components/ScreenshotGrid";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
+import { Spinner } from "@/components/ui/spinner";
 
 import useGame from "@/hooks/useGame";
 import { useParams } from "react-router";
@@ -14,7 +15,13 @@ export default function GameDetailPage() {
 	const { slug } = useParams();
 	const { data: game, error, isLoading } = useGame(slug!);
 
-	if (isLoading) return <p>Loading...</p>;
+	if (isLoading)
+		return (
+			<div className="flex justify-center items-center gap-5 min-h-screen">
+				<Spinner className="text-4xl sm:text-5xl md:text-6xl size-10"/>
+				<h2 className="text-3xl sm:text-4xl md:text-5xl">Loading...</h2>
+			</div>
+		);
 
 	if (error || !game) throw error;
 
@@ -25,7 +32,7 @@ export default function GameDetailPage() {
 			<main className="grid lg:grid-cols-2 gap-5">
 				<div className="flex flex-col gap-4">
 					<div className="flex flex-col gap-2">
-						<h1 className="text-4xl sm:text-5xl md:text-6xl font-bold flex  items-center gap-4">
+						<h1 className="text-4xl sm:text-5xl md:text-6xl font-bold">
 							{game.name}
 						</h1>
 						<Emoji size={11} rating={game.rating_top} />

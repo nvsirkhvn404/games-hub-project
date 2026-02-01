@@ -30,10 +30,10 @@ export default function ScreenshotGrid({ gameId }: { gameId: number }) {
 
 	return (
 		<>
-			<div className="flex flex-col gap-5 px-10 select-none">
-				<h3 className="text-2xl sm:text-3xl md:text-4xl font-bold">
+				<h3 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-5">
 					Screenshots
 				</h3>
+			<div className="flex flex-col px-10 select-none">
 				<Carousel opts={{ loop: true }}>
 					<CarouselContent>
 						{data.results.map((file, index) => (
