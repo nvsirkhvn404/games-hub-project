@@ -6,18 +6,27 @@ import { Link } from "react-router";
 import CriticScore from "./CriticScore";
 import Emoji from "./Emoji";
 import PlatformIconList from "./PlatformIconList";
+import { useState } from "react";
 
 export default function GameCard({ game }: { game: Game }) {
+	const [imgLoaded, setImgLoaded] = useState(false);
+
 	return (
 		<motion.div
 			initial={{ opacity: 0, scale: 0.9, y: 20 }}
 			animate={{ opacity: 1, scale: 1, y: 0 }}
+			whileHover={{ scale: 1.05, boxShadow: 2 }}
+			transition={{ duration: 0.1, ease: "easeOut" }}
 		>
-			<Card className="transition-all ease-out duration-200 hover:scale-105 hover:shadow-2xl">
-				<CardHeader>
-					<img
+			<Card>
+				<CardHeader className="min-h-40">
+					<motion.img
 						src={getCroppedImageUrl(game.background_image)}
 						alt={game.name}
+						onLoad={() => setImgLoaded(true)}
+						initial={{ opacity: 0}}
+						animate={imgLoaded ? { opacity: 1} : { opacity: 0 }}
+						transition={{ duration: 0.4, ease: "easeOut" }}
 					/>
 				</CardHeader>
 				<CardContent className="text-xl font-bold">
