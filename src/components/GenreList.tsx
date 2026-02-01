@@ -3,6 +3,7 @@ import { GenreListSkeleton } from "./GenreListSkeleton";
 import { Button } from "./ui/button";
 import getCroppedImageUrl from "@/service/image-url";
 import useGameQueryStore from "@/store";
+import { motion } from "motion/react";
 
 export default function GenreList() {
 	const genreId = useGameQueryStore((s) => s.gameQuery.genreId);
@@ -13,7 +14,12 @@ export default function GenreList() {
 	if (error) return <p>{error.message}</p>;
 
 	return (
-		<div className="col-end-1">
+		<motion.div
+			initial={{ opacity: 0, y: 20 }}
+			animate={{ opacity: 1, y: 0 }}
+			transition={{ duration: 0.4, ease: "easeOut" }}
+			className="col-end-1"
+		>
 			<div className="hidden sm:flex flex-col">
 				<h2 className="text-2xl sm:text-3xl md:text-4xl m-4 font-bold ">
 					Genres
@@ -55,6 +61,6 @@ export default function GenreList() {
 					</ul>
 				)}
 			</div>
-		</div>
+		</motion.div>
 	);
 }
