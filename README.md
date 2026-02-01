@@ -1,73 +1,118 @@
-# React + TypeScript + Vite
+# 🎮 Games Hub – Game Discovery Platform
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern game discovery web app built using the RAWG API.  
+Browse, search, and explore thousands of video games with filters, trailers, and detailed info.
 
-Currently, two official plugins are available:
+Live Demo 👉 https://games-hub-project.vercel.app/
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## 🚀 Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- 🔍 Search games by name
+- 🎯 Filter by genre, platform, and rating
+- 📊 Sort by popularity, release date, and more
+- ♾️ Infinite scroll / pagination
+- 📄 Detailed game pages
+- 🎬 Trailers & screenshots
+- ⚡ Fast loading with caching
+- 📱 Responsive design (mobile-friendly)
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 🛠 Tech Stack
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- **Frontend:** React + TypeScript + Vite
+- **Styling:** Tailwind CSS
+- **State Management:** Zustand
+- **Server State:** React Query (TanStack Query)
+- **API:** RAWG Video Games Database API
+- **Deployment:** Vercel
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+---
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## 📸 Screenshots
+
+
+Examples:
+
+![Home Page](./screenshots/HomePage.png)
+
+![Game Detail 1](./screenshots/GameDetail1.png)
+
+![Game Detail 2](./screenshots/GameDetail2.png)
+
+---
+
+## 📦 Installation & Setup
+
+Clone the repository:
+
+```bash
+git clone https://github.com/nvsirkhvn404/games-hub-project.git
+cd games-hub-project
+Install dependencies (using Bun or npm):
+
+bun install
+# or
+npm install
+Create a .env file and add your RAWG API key:
+
+VITE_RAWG_API_KEY=your_api_key_here
+Start the development server:
+
+bun run dev
+# or
+npm run dev 
 ```
+---
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 📚 What I Learned While building this project:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+How to work with a real-world public API
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Managing server state using React Query
+
+Global state management with Zustand
+
+Building scalable component structures
+
+Handling loading, error, and empty states
+
+Deploying projects using Vercel
+
+Writing cleaner and more maintainable React code
+
+---
+
+### 🤝 Contributing
+Contributions, suggestions, and feedback are welcome!
+
+If you’d like to improve this project:
+
+Fork the repo
+
+Create a new branch
+
+Make your changes
+
+Submit a pull request
+
+📄 License
+This project is open-source and available under the MIT License.
+
+---
+
+### 🙌 Acknowledgements
+RAWG API for providing game data
+
+React & Vite communities
+
+Open-source contributors
+
+---
+
+💬 Feedback
+If you have any feedback or ideas, feel free to open an issue or reach out.
+
+Thanks for checking out my project! 😊
