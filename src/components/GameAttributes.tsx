@@ -15,7 +15,6 @@ export default function GameAttributes({ game }: { game: Game }) {
 		website,
 		playtime,
 	} = game;
-	console.log(game);
 
 	return (
 		<div className="flex flex-wrap gap-4 my-5 max-w-5xl">
