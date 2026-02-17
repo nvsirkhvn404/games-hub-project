@@ -55,7 +55,7 @@ export default function GameAttributes({ game }: { game: Game }) {
 				<GameAttribute term="Website">
 					<Link
 						to={website}
-						className="wrap-break-word overflow-hidden underline"
+						className="underline"
 					>
 						{website}
 					</Link>
@@ -83,7 +83,7 @@ function GameAttribute({ term, children }: Props) {
 	return (
 		<div className="bg-muted px-4 py-3 rounded-md hover:bg-muted/60 transition-all">
 			<p className="text-muted-foreground">{term}</p>
-			<div className="flex gap-2 flex-wrap">{children}</div>
+			<div className="flex gap-2 flex-wrap wrap-anywhere">{children}</div>
 		</div>
 	);
 }
