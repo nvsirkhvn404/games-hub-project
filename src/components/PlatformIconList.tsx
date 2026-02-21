@@ -36,7 +36,7 @@ export default function PlatformIconList({
 	};
 	return (
 		<div className="flex flex-wrap gap-1.5 text-neutral-600 my-2">
-			{platforms.map(({ id, slug, name }) => {
+			{platforms?.map(({ id, slug, name }) => {
 				const Icon = iconMap[slug];
 				if (!Icon) return null;
 				return (

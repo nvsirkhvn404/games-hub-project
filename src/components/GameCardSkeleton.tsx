@@ -14,8 +14,9 @@ export default function GameCardSkeleton() {
 					initial={{ opacity: 0, y: 20 }}
 					animate={{ opacity: 1, y: 0 }}
 					transition={{ duration: 0.4, ease: "easeOut" }}
+					key={skeleton}
 				>
-					<Card key={skeleton} className="overflow-hidden min-h-75 ">
+					<Card className="overflow-hidden min-h-75 ">
 						<CardHeader className="p-0">
 							<Skeleton className="h-40 w-full rounded-none" />
 						</CardHeader>
