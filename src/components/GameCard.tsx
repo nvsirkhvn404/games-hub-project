@@ -13,34 +13,39 @@ export default function GameCard({ game }: { game: Game }) {
 
 	return (
 		<motion.div
-			initial={{ opacity: 0, scale: 0.9, y: 20 }}
-			animate={{ opacity: 1, scale: 1, y: 0 }}
-			whileHover={{ scale: 1.05, boxShadow: 2 }}
-			transition={{ duration: 0.1, ease: "easeOut" }}
+			initial={{ opacity: 0, y: 20 }}
+			whileInView={{ opacity: 1, y: 0 }}
+			viewport={{ once: true }}
+			transition={{ duration: 0.4, ease: "easeOut", delay: 0.2 }}
 		>
-			<Card>
-				<CardHeader className="min-h-40">
-					<motion.img
-						src={getCroppedImageUrl(game.background_image)}
-						alt={game.name}
-						onLoad={() => setImgLoaded(true)}
-						initial={{ opacity: 0}}
-						animate={imgLoaded ? { opacity: 1} : { opacity: 0 }}
-						transition={{ duration: 0.4, ease: "easeOut" }}
-					/>
-				</CardHeader>
-				<CardContent className="text-xl font-bold">
-					<div className="flex items-center justify-between">
-						<PlatformIconList
-							size="18"
-							platforms={game.parent_platforms?.map((p) => p?.platform)}
+			<motion.div
+				whileHover={{ scale: 1.05, boxShadow: 2 }}
+				transition={{ duration: 0.2, ease: "easeOut" }}
+			>
+				<Card>
+					<CardHeader className="min-h-40">
+						<motion.img
+							src={getCroppedImageUrl(game.background_image)}
+							alt={game.name}
+							onLoad={() => setImgLoaded(true)}
+							initial={{ opacity: 0 }}
+							animate={imgLoaded ? { opacity: 1 } : { opacity: 0 }}
+							transition={{ duration: 0.4, ease: "easeOut" }}
 						/>
-						<CriticScore score={game.metacritic} />
-					</div>
-					<Link to={`/games/${game.slug}`}>{game.name}</Link>
-					<Emoji rating={game.rating_top} />
-				</CardContent>
-			</Card>
+					</CardHeader>
+					<CardContent className="text-xl font-bold">
+						<div className="flex items-center justify-between">
+							<PlatformIconList
+								size="18"
+								platforms={game.parent_platforms?.map((p) => p?.platform)}
+							/>
+							<CriticScore score={game.metacritic} />
+						</div>
+						<Link to={`/games/${game.slug}`}>{game.name}</Link>
+						<Emoji rating={game.rating_top} />
+					</CardContent>
+				</Card>
+			</motion.div>
 		</motion.div>
 	);
 }
