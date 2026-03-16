@@ -1,5 +1,5 @@
 import Emoji from "@/components/Emoji";
-import ExpandableText from "@/components/ExpandableText";
+import ExpandableText from "@/components/AboutSection";
 import GameAttributes from "@/components/GameAttributes";
 import PlatformIconList from "@/components/PlatformIconList";
 import MediaSection from "@/components/MediaSection";
