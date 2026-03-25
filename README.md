@@ -3,7 +3,7 @@
 A modern game discovery web app built using the RAWG API.  
 Browse, search, and explore thousands of video games with filters, trailers, and detailed info.
 
-Live Demo 👉 https://games-hub-project.vercel.app/
+Live Demo 👉 https://gameshub.nvsirkhvn.online/
 
 ---
 
